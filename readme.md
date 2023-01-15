@@ -19,7 +19,7 @@
 
 使用指令
 ```bash
-export GOPATH="您的 Golang 目录"
+export GOROOT="您的 Golang 目录"
 ./gradlew build
 ```
 
