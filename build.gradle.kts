@@ -37,12 +37,12 @@ abstract class GoBuild @Inject() constructor() : DefaultTask() {
     private val logger = org.slf4j.LoggerFactory.getLogger(GoBuild::class.java)
 
     private val goExecutable: File by lazy {
-        val goPath = System.getenv("GOPATH").also {
+        val goRoot = System.getenv("GOROOT").also {
             if (it?.isBlank() != false) {
-                throw IllegalStateException("GOPATH is empty")
+                throw IllegalStateException("GOROOT is empty")
             }
         }
-        val goBin = File(File(goPath), "bin")
+        val goBin = File(File(goRoot), "bin")
         val goExecutable = File(goBin, "go")
         logger.info("go executable path: $goExecutable")
         if (!File("$goExecutable.exe").exists() && !goExecutable.exists()) {
